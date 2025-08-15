@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Heart – HTML & CSS Only</title>
+  <style>
+    :root {
+      --size: 220px;
+      --blue: #1e90ff;
+      --bg: #f5f7fb;
+    }* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.wrap {
+  display: grid;
+  place-items: center;
+  gap: 12px;
+}
+
+.heart {
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  transform: rotate(-45deg);
+  background: var(--blue);
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,.15));
+  border-radius: 12px 0 0 12px;
+  animation: beat 1.25s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--blue);
+  border-radius: 50%;
+}
+
+.heart::before { top: -50%; left: 0; }
+.heart::after { left: 50%; top: 0; }
+
+@keyframes beat {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  25% { transform: rotate(-45deg) scale(1.04); }
+  50% { transform: rotate(-45deg) scale(1.08); }
+  75% { transform: rotate(-45deg) scale(1.04); }
+}
+
+figcaption {
+  font-weight: 600;
+  letter-spacing: .2px;
+  opacity: .9;
+  font-size: 1.1rem;
+}
+
+.message {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 360px) {
+  :root { --size: 170px; }
+}
+
+  </style>
+</head>
+<body>
+  <figure class="wrap">
+    <div class="heart" role="img" aria-label="A blue heart"></div>
+    <figcaption>💙 I love you 😘♥️</figcaption>
+    <div class="message">Happy 5th anniversary 😘😘♥️</div>
+  </figure>
+</body>
+</html>
